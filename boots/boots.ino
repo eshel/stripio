@@ -73,7 +73,7 @@ Animation* s_Animations[] = {
 };
 
 
-static const int s_AnimationsCount = sizeof(s_Animations) / sizeof(Animation*);
+#define ANIMATIONS_COUNT (sizeof(s_Animations) / sizeof(Animation*))
 
 Animation* s_IdleAnimations[] = {
   &rain,
@@ -160,7 +160,7 @@ void setup() {
   greenWalker.setColorHead(128, 255, 255);
   greenWalker.setColorTrailHue(0);
 
-  for (Animation** a = s_Animations; a != s_Animations + s_AnimationsCount; ++a) {
+  for (Animation** a = s_Animations; a != s_Animations + ANIMATIONS_COUNT; ++a) {
     (*a)->begin();
   }
 
@@ -240,7 +240,7 @@ void loop() {
   }
 
   if (!isModeIndication) {
-    for (Animation** a = s_Animations; a != s_Animations + s_AnimationsCount; ++a) {
+    for (Animation** a = s_Animations; a != s_Animations + ANIMATIONS_COUNT; ++a) {
       if ((*a)->isActive()) {
         (*a)->draw();
       }
